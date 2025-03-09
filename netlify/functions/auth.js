@@ -1,12 +1,11 @@
 exports.handler = async (event) => {
-    const users = {
-        "admin": "Pa$$w0rd",
-    };
+    const username = "admin";
+    const password = process.env.ADMIN_PASSWORD;
 
     try {
-        const { username, password } = JSON.parse(event.body);
+        const { username: inputUser, password: inputPass } = JSON.parse(event.body);
 
-        if (users[username] && users[username] === password) {
+        if (inputUser === username && inputPass === password) {
             return {
                 statusCode: 200,
                 body: JSON.stringify({ success: true, token: "blue-puffin-token" })
