@@ -1,13 +1,14 @@
-import type {ReactNode} from 'react';
+import React, { JSX, useEffect } from 'react';
 import clsx from 'clsx';
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 import Layout from '@theme/Layout';
 import Heading from '@theme/Heading';
+import { useHistory } from '@docusaurus/router'; // Import pour gérer la redirection
 
 import styles from './index.module.css';
 
 function HomepageHeader() {
-  const {siteConfig} = useDocusaurusContext();
+  const { siteConfig } = useDocusaurusContext();
   return (
     <header className={clsx('hero hero--warning', styles.heroBanner)}>
       <div className="container">
@@ -22,12 +23,21 @@ function HomepageHeader() {
   );
 }
 
-export default function Home(): ReactNode {
-  const {siteConfig} = useDocusaurusContext();
+export default function Home(): JSX.Element {
+  const { siteConfig } = useDocusaurusContext();
+  const history = useHistory();
+
+  useEffect(() => {
+    if (!localStorage.getItem('authToken')) {
+      history.push('/login');
+    }
+  }, []);
+
   return (
     <Layout
       title={`Under Construction - ${siteConfig.title}`}
-      description="This site is under construction, thank you for your patience!">
+      description="This site is under construction, thank you for your patience!"
+    >
       <HomepageHeader />
       <main>
         <div className="container" style={{ textAlign: 'center', padding: '2rem' }}>

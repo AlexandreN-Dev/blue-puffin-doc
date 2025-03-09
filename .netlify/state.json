@@ -1,0 +1,20 @@
+{
+	"geolocation": {
+		"data": {
+			"city": "Nantes",
+			"country": {
+				"code": "FR",
+				"name": "France"
+			},
+			"subdivision": {
+				"code": "PDL",
+				"name": "Pays de la Loire"
+			},
+			"timezone": "Europe/Paris",
+			"latitude": 47.2145,
+			"longitude": -1.5512,
+			"postalCode": "44000"
+		},
+		"timestamp": 1741512468974
+	}
+}
